@@ -139,13 +139,19 @@ func BuildMonthlyTransactionReport(transactions []Transaction) {
 	fmt.Println(string(b))
 
 	n := strconv.Itoa(len(report))
-	totalMonthsReported, _ := decimal.NewFromString(n)
-	asr := MonthlyReport{totalspend.Div(totalMonthsReported).Div(divider).Round(2), totalincome.Div(totalMonthsReported).Div(divider).Round(2)}
-
-	b1, err := json.Marshal(asr)
+	totalMonthsReported, err := decimal.NewFromString(n)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println("average:", string(b1))
+	if len(report) > 0 {
+		asr := MonthlyReport{totalspend.Div(totalMonthsReported).Div(divider).Round(2), totalincome.Div(totalMonthsReported).Div(divider).Round(2)}
+
+		b1, err := json.Marshal(asr)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		fmt.Println("average:", string(b1))
+	}
 }

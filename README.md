@@ -18,4 +18,4 @@ Took out the credentials for security reasons, however you can update the defaul
 If you set your GOBIN to your go_level_money repo directory you can use 'go install' to build the executable
 
 Example
-./go_level_money -api_token A -auth_token 73A1942E27AADAE94E3975BD9BB8F1E2 -uid 1110590645
+./go_level_money -api_token GOTMEAPITOKEN -auth_token HAVEMEAUTHTOKEN -uid NEEDSAUSERID
